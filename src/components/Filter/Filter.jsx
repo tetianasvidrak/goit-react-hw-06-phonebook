@@ -1,6 +1,16 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { filterContacts } from 'store/filterSlice';
 import css from './Filter.module.css';
 
-const Filter = ({ filter, onFilterHandler }) => {
+const Filter = ({}) => {
+  const filter = useSelector(state => state.filter);
+
+  const dispatch = useDispatch();
+
+  const onFilterHandler = event => {
+    dispatch(filterContacts(event.target.value));
+  };
+
   return (
     <label className={css.form__text}>
       Find contacts by Name
